@@ -1,0 +1,38 @@
+﻿@using MyShop.Utilities
+
+@model IEnumerable<DataLayer.Product_Comment>
+
+
+@foreach (var item in Model.Where(c => c.ParnetID == null))
+{
+    <li>
+        <button onclick="ReplayComment(@item.CommentID)" class="reply-button">پاسخ</button>
+        <img src="~/Content/img/avatar.jpg" width="65">
+        <div>
+            <h5>ارسال شده از : @item.Name در تاریخ : @item.CommentDate.ToShamsi() </h5>
+            <p>
+                @item.Comment
+            </p>
+        </div>
+        <div class="clearfix"></div>
+
+        @if (Model.Any(c => c.ParnetID == item.CommentID))
+        {
+            <ul>
+                @foreach (var sub_item in Model.Where(c => c.ParnetID == item.CommentID))
+                {
+                    <li>
+                        <img src="~/Content/img/avatar.jpg" width="65">
+                        <div>
+                            <h5>ارسال شده از : @sub_item.Name در تاریخ : @sub_item.CommentDate.ToShamsi() </h5>
+                            <p>
+                                @sub_item.Comment
+                            </p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                }
+            </ul>
+        }
+    </li>
+}

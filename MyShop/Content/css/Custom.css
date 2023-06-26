@@ -1,0 +1,30 @@
+﻿.w-100 {
+    width: 100% !important;
+}
+.hr-articl {
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+.span-title {
+    margin-top: 5px !important;
+    display: block;
+    font-size: 15px;
+    font-weight: bolder;
+}
+.m-1 {
+    margin: 0 15px !important;
+    margin-bottom: 10px !important;
+}
+.m-2 {
+    margin: 0 15px !important;
+}
+
+.align-label {
+    vertical-align: middle !important;
+}
+.archive-groups {
+    width: 100%;
+    border-bottom: none !important;
+    width: 100%;
+    padding: 0px 25px 0px 0px !important;
+}

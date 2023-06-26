@@ -1,0 +1,80 @@
+﻿
+@using MyShop.Utilities
+@model DataLayer.Users
+
+@{
+    ViewBag.Title = "DetailsUser";
+}
+
+<h2 class="font_family_pe" style="font-size: 25px">اطلاعات کاربر</h2>
+
+<div>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt style="font-size: 15px !important;" class="font_family_pe ">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd style="margin-top: 25px !important; font-size: 15px !important;" class="font_family_pe ">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt style="margin-top: 25px !important; font-size: 15px !important;" class="font_family_pe ">
+            @Html.DisplayNameFor(model => model.Roles.RoleTitle)
+        </dt>
+
+        <dd style="margin-top: 25px !important; font-size: 15px !important;" class="font_family_pe ">
+            @Html.DisplayFor(model => model.Roles.RoleTitle)
+        </dd>
+        <dt style="margin-top: 25px !important; font-size: 15px !important;" class="font_family_pe ">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd style="margin-top: 25px !important; font-size: 15px !important;">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt style="margin-top: 25px !important; font-size: 15px !important;" class="font_family_pe ">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd style="margin-top: 25px !important; font-size: 15px !important;">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt style="margin-top: 25px !important; font-size: 15px !important;" class="font_family_pe">
+            @Html.DisplayNameFor(model => model.ActiveCode)
+        </dt>
+
+        <dd style="margin-top: 25px !important; font-size: 15px !important;">
+            @Html.DisplayFor(model => model.ActiveCode)
+        </dd>
+
+        <dt style="margin-top: 25px !important; font-size: 15px !important;" class="font_family_pe">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd style="margin-top: 25px !important; font-size: 15px !important;">
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt style="margin-top: 25px !important; font-size: 15px !important;" class="font_family_pe">
+            @Html.DisplayNameFor(model => model.RegisterDate)
+        </dt>
+
+        <dd style="margin-top: 25px !important; font-size: 15px !important;" class="font_family_pe ">
+           @Model.RegisterDate.ToShamsi()
+        </dd>
+
+    </dl>
+    <hr/>
+    <div class="form-group">
+        <div class="col-md-offset-2 margin-top-25 col-md-10">
+            <a href="@Url.Action("Edit",new { id = Model.UserId })" class="btn btn-warning" title="ویرایش">
+                <i class="fa fa-edit fa-2x"></i>
+            </a>
+            <a href="@Url.Action("Index")" class="btn btn-info" title="بازگشت">
+                <i class="fa fa-arrow-circle-left fa-2x"></i>
+            </a>
+        </div>
+    </div>
+</div>

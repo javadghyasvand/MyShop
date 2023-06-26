@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'yekan';
+    src: url("../fonts/yekanweb.eot");
+    src: url("../fonts/yekanweb.eot?#iefix") format("embedded-opentype"),url("../fonts/yekanweb.woff") format("woff"),url("../fonts/yekanweb.ttf") format("truetype"),url("../fonts/yekanweb.svg#web_Yekan") format("svg");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'numbers';
+    src: url("../fonts/yekannumbers.eot");
+    src: url("../fonts/yekannumbers.eot?#iefix") format("embedded-opentype"),url("../fonts/yekannumbers.woff") format("woff"),url("../fonts/yekannumbers.ttf") format("truetype"),url("../fonts/yekannumbers.svg#web_Yekan") format("svg");
+    font-style: normal;
+    font-weight: normal;
+}
+
+.font_family_pe {
+    font-family: 'yekan','numbers';
+    font-weight: bolder ;
+    color: #505050;
+}
+.font_family_En {
+    font-family: monospace,sans-serif;
+    font-weight: bolder;
+    color: #505050;
+}
+.form-control {
+    height: 40px !important;
+}
+.float-start {
+    float: left !important;
+}
+.table_border {
+    border-top: none !important;
+    border-bottom: 2px solid black  !important
+}
+.mb-2 {
+    margin-bottom: 60px !important;
+}
+.inline-block {
+    display: inline-block
+}
+.padding-0 {
+    padding: 0 !important;
+}
+.text-dark {
+    color: #353535 !important
+}

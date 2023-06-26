@@ -1,0 +1,73 @@
+﻿@using DataLayer
+@model DataLayer.Product_Galleries
+
+@{
+    ViewBag.Title = "Gallery";
+}
+
+<h2 class="font_family_pe">گالری تصاویر</h2>
+<hr/>
+<div class="row">
+    @using (Html.BeginForm("Gallery", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(m => m.ProductID)
+        <div class="col-md-4">
+            <div class="form-horizontal font_family_pe">
+            
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ImageName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="ImgUp" class="form-control"/>
+                        @Html.ValidationMessageFor(model => model.ImageName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <hr/>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" title="ثبت تصویر" class="btn btn-success">
+                            <i class="fa fa-save fa-2x"></i>
+                        </button>
+                        <a href="@Url.Action("Index")" class="btn btn-info" title="بازگشت">
+                            <i class="fa fa-arrow-circle-left fa-2x"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 font_family_pe">
+            @{
+                List<Product_Galleries> galleriesList = ViewBag.Gallery;
+                <table class="table table-bordered">
+                    <tr>
+                        <th>تصویر</th>
+                        <th>عنوان</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var image in  galleriesList)
+                    {
+                        <tr>
+                            <th><img  class="thumbnail" src="~/Images/ProductImages/Thumbnail/@image.ImageName"/></th>
+                            <th>@image.Title</th>
+                            <th>
+                                <a class="btn btn-danger btn-xs" title="حذف کردن عکس" href="/Admin/Products/DeleteGallery/@image.GalleryID">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </th>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+    }
+</div> 
+<hr/>

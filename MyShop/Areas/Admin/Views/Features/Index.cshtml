@@ -1,0 +1,35 @@
+﻿@model IEnumerable<DataLayer.Features>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center font_family_pe">ویژگی ها</h2>
+<hr/>
+<p class="font_family_pe text-center">
+    @Html.ActionLink("ایجاد ویژگی جدید", "Create",null, new { @class = "btn btn-success btn-block font_family_pe " })
+</p>
+<table class="table font_family_pe ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FeaturesTitle)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FeaturesTitle)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit",new {id=item.FeatureId})" class="btn btn-warning inline-block" title="ویرایش">
+                <i class="fa fa-edit"></i>
+            </a>
+            <a href="@Url.Action("Delete", new { id = item.FeatureId })" class="btn btn-danger inline-block" title="حذف">
+                <i class="fa fa-trash-o"></i>
+            </a>
+        </td>
+    </tr>
+}
+</table>

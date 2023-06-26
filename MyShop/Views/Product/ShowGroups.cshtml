@@ -1,0 +1,50 @@
+﻿@using DataLayer
+
+@model IEnumerable<DataLayer.Product_Groups>
+
+<section class="border-radius">
+    <span class="text-center span-title"> دسته بندی ها</span>
+    <hr class="hr-articl"/>
+    <article>
+        <ul class="category-menu">
+            @foreach (var group in Model.Where(g => g.ParentId == null))
+            {
+                <li>
+                    <h2>
+                        <a style="font-family: yekan;">@group.GroupTitle</a>
+                    </h2>
+                    @if (Model.Any(g => g.ParentId == group.ParentId))
+                    {
+                        <ul>
+                            @foreach (var subGroup in Model.Where(g => g.ParentId == group.GroupId))
+                            {
+                                <li>
+                                    <h2>
+                                        <a style="font-family: yekan;" href="/Archive?selectGroup=@subGroup.GroupId">@subGroup.GroupTitle </a>
+                                    </h2>
+
+                                    @if (Model.Any(g => g.ParentId == subGroup.ParentId))
+                                    {
+                                        <ul>
+                                            @foreach (var subGroup2 in Model.Where(g => g.ParentId == subGroup.GroupId))
+                                            {
+                                                <li>
+                                                    <h2>
+                                                        <a style="font-family: yekan;" href="/Archive?selectGroup=@subGroup2.GroupId">@subGroup2.GroupTitle</a>
+                                                    </h2>
+                                                </li>
+                                            }
+
+                                        </ul>
+                                    }
+                                </li>
+                            }
+
+                        </ul>
+                    }
+
+                </li>
+            }
+        </ul>
+    </article>
+</section>

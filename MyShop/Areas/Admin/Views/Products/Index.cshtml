@@ -1,0 +1,83 @@
+﻿
+@model IEnumerable<DataLayer.Products>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="font_family_pe mb-2 text-center">
+    <span>لیست محصول ها</span>
+</h2>
+<hr/>
+<p class="text-center">
+    <a href="@Url.Action("Create")" class="btn btn-success text-primary btn-block font_family_pe"><span>محصول جدید</span></a>
+</p>
+<table class="table font_family_pe table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            گروه های محصول
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img class="thumbnail" src="~/Images/ProductImages/Thumbnail/@item.ImageName" width="150px"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @if (item.Product_Select_Groups.Any())
+                {
+                    <ol>
+                        @foreach (var group in item.Product_Select_Groups)
+                        {
+                            <li>@group.Product_Groups.GroupTitle</li>
+                        }
+                    </ol>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+            <td>
+                @item.CreateDate.ToString("dddd, dd MMMM yyyy")
+            </td>
+            <td>
+                <a href="@Url.Action("ProductFeature",new {id=item.ProductId})" class="btn btn-primary inline-block" title="ویژگی های محصول">
+                    <i class="fa fa-product-hunt"></i>
+                </a>
+                <a href="@Url.Action("Gallery",new {id=item.ProductId})" class="btn btn-info inline-block" title="گالری محصول">
+                    <i class="fa fa-photo"></i>
+                </a>
+                <a href="@Url.Action("Edit", new { id = item.ProductId })" class="btn btn-warning inline-block" title="محصول ویرایش">
+                    <i class="fa fa-edit"></i>
+                </a>
+                <a href="@Url.Action("Delete", new { id = item.ProductId })" class="btn btn-danger inline-block" title="حذف محصول ">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+
+
+            </td>
+        </tr>
+    }
+
+</table>
+

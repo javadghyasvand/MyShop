@@ -1,0 +1,91 @@
+﻿@model IEnumerable<DataLayer.Product_Groups>
+
+<table class="table table-bordered font_family_pe">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupTitle)
+        </th>
+        <th>
+            زیر گروه ها
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Where(g => g.ParentId == null))
+    {
+        <tr id="Group_@item.GroupId">
+
+            <td>
+                <div class="col-md-5">
+                    <label >
+                        @item.GroupTitle
+                    </label>
+                </div>
+
+                <div class="col-md-5">
+                    <a class="btn btn-info btn-xs" onclick="CreateHeadrGroup(@item.GroupId)" title="اضافه کردن زیر گروه">
+                        <i class="fa fa-plus-circle"></i>
+                    </a>
+                    <a class="btn btn-warning btn-xs" onclick="Edit( @item.GroupId)" title="ویرایش کردن سر گروه">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a class="btn btn-danger btn-xs" title="حذف کردن سر گروه" onclick="Delete(@item.GroupId)">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                </div>
+            </td>
+            <td>
+                @if (Model.Any(g => g.ParentId == item.GroupId))
+                {
+                    <ul>
+                        @foreach (var subgroup1 in Model.Where(g => g.ParentId == item.GroupId))
+                        {
+                            <table class="table" style="border-top: 2px solid transparent !important">
+                                <tr style="border-top: 2px solid transparent !important">
+                                    <hr/>
+                                    <th id="Group_@subgroup1.GroupId" class="col-md-6 ">
+                                        <span class="col-lg-3">@subgroup1.GroupTitle</span>
+                                        <a class="btn btn-info btn-xs" title="اضافه کردن زیر گروه" onclick="CreateHeadrGroup(@subgroup1.GroupId)">
+                                            <i class="fa fa-plus-circle"></i>
+                                        </a>
+                                        <a class="btn btn-warning btn-xs" title="ویرایش کردن زیر گروه" onclick="Edit( @subgroup1.GroupId)">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger btn-xs" title="حذف کردن زیر گروه" onclick="Delete(@subgroup1.GroupId)">
+                                            <i class="fa fa-trash-o"></i>
+                                        </a>
+
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-6 ">
+                                    @if (Model.Any(g => g.ParentId == subgroup1.GroupId))
+                                    {
+                                        foreach (var subgroup2 in Model.Where(g => g.ParentId == subgroup1.GroupId))
+                                        {
+                                            <p id="Group_@subgroup2.GroupId">
+                                                <span class="col-lg-3">@subgroup2.GroupTitle</span>
+
+                                                <a class="btn btn-warning btn-xs" onclick="Edit( @subgroup2.GroupId)" title="ویرایش کردن زیر گروه">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a class="btn btn-danger btn-xs" onclick="Delete( @subgroup2.GroupId)" title="حذف کردن زیر گروه">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </a>
+
+                                            </p>
+                                        }
+                                    }
+
+
+                                </tr>
+                            </table>
+                        }
+                    </ul>
+                }
+            </td>
+
+
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DataLayer.Product_Groups>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="font_family_pe"> گروه ها و زیر گروه ها</h2>
+
+<p>
+    <a class="btn btn-success btn-block" title="افزودن سرگروه جدید" onclick="CreateHeadrGroup()">
+        <i class="fa fa-2x fa-plus-circle"></i>
+    </a>
+</p>
+<hr/>
+
+<div id="ListGroup">
+    @Html.Action("ListGroups")
+</div>
+<!-- Modal -->
+<div class="modal fade font_family_pe" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title font_family_pe" id="MyModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body" id="MyModalBody">
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<script>
+    function CreateHeadrGroup(parentId) {
+        $.get("/Admin/Product_Groups/Create/" + parentId, function (result) {
+            $("#MyModal").modal();
+            $("#MyModalLabel").html("افزودن گروه جدید");
+            $("#MyModalBody").html(result);
+        });
+    }
+
+    function Edit(id) {
+        $.get("/Admin/Product_Groups/Edit/" +   id, function (result) {
+            $("#MyModal").modal("show");
+            $("#MyModalLabel").html("ویرایش گروه");
+            $("#MyModalBody").html(result);
+        });
+    }
+    function Delete(id) {
+        if (confirm("آیا از حذف مطمئن هستید؟")) {
+
+            $.get("/Admin/Product_Groups/Delete/" + id, function (result) {
+                $("#Group_" + id).hide("slow");
+            });
+        }
+    }
+    function Success() {
+        $("#MyModal").modal("hide");
+    }
+
+</script>
+-->

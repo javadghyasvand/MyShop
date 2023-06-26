@@ -1,0 +1,71 @@
+﻿
+@using MyShop.Utilities
+@model IEnumerable<DataLayer.Users>
+
+@{
+    ViewBag.Title = "UserAdmin";
+}
+
+<h2 class="font_family_pe">مدیریت کاربران</h2>
+<hr/>
+<p>
+    <a class="btn-success btn btn-block" title="افزودن کاربر جدید" href="@Url.Action("Create")">
+        <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+    </a>
+</p>
+
+<table class="table">
+    <tr class="font_family_pe">
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Roles.RoleTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegisterDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+
+        <td></td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="font_family_pe">
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td class="font_family_pe">
+                @Html.DisplayFor(modelItem => item.Roles.RoleTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+
+            <td class="font_family_pe">
+                @item.RegisterDate.ToShamsi()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                <a class="btn-warning btn" title="ویرایش" href="@Url.Action("Edit", new { id = item.UserId })">
+                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                </a>
+                <a class="btn-info btn " title="جزئیات" href="@Url.Action("Details", new { id = item.UserId })">
+                    <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
+                </a>
+                <a class="btn-danger btn" title="حذف" href="@Url.Action("Delete", new { id = item.UserId })">
+                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

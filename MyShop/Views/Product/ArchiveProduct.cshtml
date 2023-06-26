@@ -1,0 +1,114 @@
+﻿@using DataLayer
+@model IEnumerable<DataLayer.Products>
+@{
+    ViewBag.Title = "Archive";
+    List<Product_Groups> groupsList = ViewBag.groups;
+    List<int> selected = ViewBag.selectGroup ?? new List<int>();
+}
+
+@section Filters
+{
+    <section class="border-radius basket-side">
+        <span class="text-center span-title"> جستجو پیشرفته </span>
+        <hr class="hr-articl" />
+        <article>
+            <form action="/Archive" id="filterform">
+                <input type="hidden" value="@ViewBag.pageId" id="pageId"  name="pageId"/>
+                <p class="m-1">عنوان</p>
+                <p class=" m-1">
+                    <input type="text" name="title" value="@ViewBag.productTitle" class="form-control w-100" />
+                </p>
+                <p class="m-1">قیمت از</p>
+                <p class=" m-1">
+                    <input type="number" name="minPrice" value="@ViewBag.minPrice" class="form-control w-100" />
+                </p>
+                <p class="m-1">قیمت تا</p>
+                <p class=" m-1">
+                    <input type="number" name="maxPrice" value="@ViewBag.maxPrice" class="form-control w-100" />
+                </p>
+                <p class="m-1">دسته بندی</p>
+                <hr class="hr-articl" />
+                <ul>
+                    @foreach (var item in groupsList.Where(g => g.ParentId == null))
+                    {
+                        <li class="archive-groups">
+                            <div class="form-group m-2">
+                                <input name="selectGroup" type="checkbox" @((selected.Any(s => s == item.GroupId)) ? "checked" : "") value="@item.GroupId" id="chexbox+@item.GroupId">
+                                <label class="align-label" for="chexbox+@item.GroupId">@item.GroupTitle</label>
+                            </div>
+                            @if (groupsList.Any(g => g.ParentId == item.GroupId))
+                            {
+                                <ul>
+                                    @foreach (var submenu in groupsList.Where(g => g.ParentId == item.GroupId))
+                                    {
+                                        <li class="archive-groups">
+                                            <div class="form-group m-2 p-1">
+                                                <input name="selectGroup" type="checkbox" @((selected.Any(s => s == submenu.GroupId)) ? "checked" : "") value="@submenu.GroupId" id="chexbox+@submenu.GroupId">
+                                                <label class="align-label" for="chexbox+@submenu.GroupId">@submenu.GroupTitle</label>
+                                            </div>
+                                            @if (groupsList.Any(g => g.ParentId == submenu.GroupId))
+                                            {
+                                                <ul>
+                                                    @foreach (var sub in groupsList.Where(g => g.ParentId == submenu.GroupId))
+                                                    {
+                                                        <li class="archive-groups">
+                                                            <div class="form-group m-2">
+                                                                <input name="selectGroup" type="checkbox" @((selected.Any(s => s == sub.GroupId)) ? "checked" : "") value="@sub.GroupId" id="chexbox+@sub.GroupId">
+                                                                <label class="align-label" for="chexbox+@sub.GroupId">@sub.GroupTitle</label>
+                                                            </div>
+                                                        </li>
+
+                                                    }
+                                                </ul>
+                                            }
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </li>
+                    }
+                </ul>
+                <hr class="hr-articl" />
+                <button class="btn btn-block btn-info" type="submit">اعمال فیلتر</button>
+            </form>
+        </article>
+    </section>
+}
+<section class="last-products">
+    @if (!String.IsNullOrEmpty(ViewBag.search))
+    {
+        <header>
+            <h3> تعداد @Model.Count() محصول با کلمه @ViewBag.search یافت شد </h3>
+        </header>
+    }
+   
+    <article>
+        @foreach (var item in Model)
+        {
+            @Html.Partial("_Product", item)
+        }
+        <div class="clearfix"></div>
+    </article>
+</section>
+@if (ViewBag.pagecount > 1)
+{
+    <hr />
+    <div class="pagination-layer text-center">
+        <ul class="pagination">
+    @for (int i = 1; i <= ViewBag.pagecount; i++)
+    {
+        <li>
+            <a onclick="ChangPage(@i)">@i</a>
+        </li>
+    }
+        </ul>
+    </div>
+
+}
+
+<script>
+    function ChangPage(PgId) {
+        $("#pageId").val(PgId);
+        $("#filterform").trigger("submit");
+    }
+</script>

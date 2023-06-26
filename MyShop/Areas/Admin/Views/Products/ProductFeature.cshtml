@@ -1,0 +1,97 @@
+﻿
+@using DataLayer
+@model DataLayer.Product_Featuers
+
+@{
+    ViewBag.Title = "ProductFeatuers";
+    IEnumerable<Features>FeatureID = ViewBag.FeatuersID;
+    
+}
+
+<h2 class="font_family_pe">ویژگی محصول</h2>
+<hr/>
+<div class="row font_family_pe">
+
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(m => m.Product_Id)
+        <div class="col-md-4">
+
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Featuers_Id, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <select id="FeatuersID" name="Featuers_Id" class="form-control">
+
+                                @foreach (var item in FeatureID)
+                                {
+                                    <option value="@item.FeatureId">@item.FeaturesTitle</option>
+                                }
+                            </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Value, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Value, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Value, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" title="ذخیره" class="btn btn-success">
+                            <i class="fa fa-save fa-2x"></i>
+                        </button>
+                        <a href="@Url.Action("Index")" class="btn btn-info" title="بازگشت">
+                            <i class="fa fa-arrow-circle-left fa-2x"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 font_family_pe">
+            @{
+                IEnumerable<Product_Featuers> productFeature = ViewBag.Featuers;
+                <table class="table table-bordered">
+                    <tr>
+
+                        <th>عنوان</th>
+                        <th>مقدار</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var Item in productFeature)
+                    {
+                        <tr id="Feature_@Item.Product_Featuer_Id">
+                            <th>@Item.Features.FeaturesTitle</th>
+                            <th>@Item.Value</th>
+                            <th>
+                                <a class="btn btn-danger btn-xs" title="حذف کردن عکس" onclick="DeleteFeature(@Item.Product_Featuer_Id)">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </th>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+    }
+</div>
+
+<!--
+<script>
+        function DeleteFeature(id) {
+            if(confirm("آیا از حذف مطمئن هستید")){
+                $.get("/Admin/Products/DeleteFeature/" + id , function () {
+                     $("#Feature_" + id).hide("slow");
+                });
+            }
+        }
+    </script>
+-->
