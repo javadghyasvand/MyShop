@@ -12,14 +12,12 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Product_Featuers
+    public partial class Shop_Card
     {
-        public int Product_Featuer_Id { get; set; }
-        public int Product_Id { get; set; }
-        public int Featuers_Id { get; set; }
-        public string Value { get; set; }
+        public int ShopCartID { get; set; }
+        public int ProductID { get; set; }
+        public int Count { get; set; }
     
-        public virtual Features Features { get; set; }
         public virtual Products Products { get; set; }
     }
 }

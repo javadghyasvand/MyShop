@@ -1059,8 +1059,7 @@ section form > label input{margin-left: 5px}
   width: 25%;
   float: right;
   padding: 10px;
-  border-left: 1px solid #dfdfdf;
-  min-height: 100px;
+    min-height: 100px;
   position: relative;
 }
 .basket-style .tbl-body ul li:last-child{

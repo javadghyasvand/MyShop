@@ -72,7 +72,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features.cs">
+      <DependentUpon>MyEshop.tt</DependentUpon>
+    </Compile>
     <Compile Include="MetaDataClasses\Features_Metadata.cs" />
+    <Compile Include="MetaDataClasses\OrderDetails_Metadata.cs" />
+    <Compile Include="MetaDataClasses\Orders_Metadata.cs" />
     <Compile Include="MetaDataClasses\Products_MetaData.cs" />
     <Compile Include="MetaDataClasses\Product_Comments_MetaData.cs" />
     <Compile Include="MetaDataClasses\Product_Featuers_Metadata.cs" />
@@ -81,10 +86,8 @@
     <Compile Include="MetaDataClasses\Product_Select_Groups_MetaData.cs" />
     <Compile Include="MetaDataClasses\Product_Tag_Metadata.cs" />
     <Compile Include="MetaDataClasses\Roles_Metadata.cs" />
+    <Compile Include="MetaDataClasses\Shop_Card_Metadata.cs" />
     <Compile Include="MetaDataClasses\Users_Metadata.cs" />
-    <Compile Include="Features.cs">
-      <DependentUpon>MyEshop.tt</DependentUpon>
-    </Compile>
     <Compile Include="MyEshop.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -99,6 +102,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MyEshop.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetails.cs">
+      <DependentUpon>MyEshop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Orders.cs">
+      <DependentUpon>MyEshop.tt</DependentUpon>
     </Compile>
     <Compile Include="Products.cs">
       <DependentUpon>MyEshop.tt</DependentUpon>
@@ -123,6 +132,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles.cs">
+      <DependentUpon>MyEshop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Shop_Card.cs">
       <DependentUpon>MyEshop.tt</DependentUpon>
     </Compile>
     <Compile Include="Users.cs">
@@ -150,7 +162,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="MyEshop.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
