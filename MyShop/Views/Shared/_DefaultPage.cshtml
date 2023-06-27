@@ -30,7 +30,7 @@
                 <ul>
                     @Html.Partial("LoggedInUser")
                     <li>
-                        <a href=""><i class="fa fa-shopping-bag"></i> سبد خرید <span>10</span></a>
+                        <a href=""><i class="fa fa-shopping-bag"></i> سبد خرید <span id="countShopCart"></span></a>
                     </li>
                 </ul>
             </div>
@@ -128,33 +128,10 @@
     <aside class="col-md-3 col-sm-4 right-side-content">
         @RenderSection("Filters", false)
         <!-- Basket -->
-        <section class="border-radius basket-side">
-            <span class="text-center span-title">سبد خرید</span>
-            <hr class="hr-articl"/>
-            <article>
-                <ul>
-                    <li>
-                        <img class="border-radius" src="~/Content/img/1.jpg">
-                        <div class="left-basket">
-                            <a href="">محصول شماره یک <span class="border-radius"> 2 </span></a>
-                        </div>
-                    </li>
-                    <li>
-                        <img class="border-radius" src="~/Content/img/1.jpg">
-                        <div class="left-basket">
-                            <a href="">محصول شماره یک <span class="border-radius"> 2 </span></a>
-                        </div>
-                    </li>
-                    <li>
-                        <img class="border-radius" src="~/Content/img/1.jpg">
-                        <div class="left-basket">
-                            <a href="">محصول شماره یک <span class="border-radius"> 2 </span></a>
-                        </div>
-                    </li>
-                </ul>
-                <a href="" class="show-basket-button border-radius">مشاهده سبد خرید</a>
-            </article>
-        </section>
+        <div id="ShowCart">
+            @Html.Action("ShowCart","ShopItems")
+        </div>
+
         <!-- End Basket -->
         <!-- compare -->
         <section class="border-radius compare-side">
@@ -195,9 +172,7 @@
     <div class="top-footer">
         <div class="container">
             <section class="col-lg-4 col-md-4 permalink-section">
-                <header>
-                    <h3> دسترسی سریع </h3>
-                </header>
+                <h3> دسترسی سریع </h3>
                 <article>
                     <ul>
                         <li>
@@ -325,7 +300,27 @@
 <script src="~/Content/Scripts/jquery.validate.unobtrusive.js"></script>
 <script src="~/Content/js/jquery.unobtrusive-ajax.min.js"></script>
 <script src="~/Content/js/MyScript.js"></script>
+
 @RenderSection("Script", false)
+<script>
+    $(function () {
+        countShopCart();
+    });
+    function countShopCart() {
+        $.get("/api/ShopCart", function (res) {
+            $("#countShopCart").html(res);
+        });
+    }
+    function AddToCart(id) {
+        $.get("/api/ShopCart/" + id, function (res) {
+            $("#countShopCart").html(res);
+            UpdateShopCart();
+        });
+    }
+    function UpdateShopCart() {
+        $("#ShowCart").load("/ShopItems/ShowCart").fadeOut(800).fadeIn(800);
+    }
+</script>
 </body>
 </html>
 
