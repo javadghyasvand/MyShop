@@ -1,0 +1,44 @@
+﻿@using DataLayer
+@model IEnumerable<DataLayer.ViewModels.CompareItem>
+ @{
+     ViewBag.Title = "Copmare";
+     List<Features> featuersList = ViewBag.featuers;
+     List<Product_Featuers> productFeatuersList = ViewBag.productFeatuersList;
+ }
+@if (Model.Any())
+{
+    <table class="table table-bordered">
+        <tr>
+            <td>تصویر</td>
+            @foreach (var item in Model)
+            {
+                <td>
+                    <img style="width:100px;height:100px" class="thumbnail" src="~/Images/ProductImages/Thumbnail/@item.ImageName"/>
+                </td>
+            }
+        </tr>
+        <tr>
+            <td>محصول</td>
+            @foreach (var item in Model)
+            {
+                <td>
+                    @item.ProductTitle`
+                </td>
+            }
+        </tr>
+        @foreach (var item in featuersList)
+        {
+            <tr>
+                <td>
+                    @item.FeaturesTitle
+                </td>
+                @foreach(var feature in Model)
+                {
+                    <td>
+                        @string.Join(" - ",productFeatuersList.Where(f=>f.Product_Id==feature.ProductId&&f.Featuers_Id==item.FeatureId).Select(f=>f.Value).ToList())
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+}

@@ -9,9 +9,11 @@
 
 namespace DataLayer
 {
+    using System.ComponentModel.DataAnnotations;
     using System;
     using System.Collections.Generic;
     
+    [MetadataType(typeof(Features_Metadata))]
     public partial class Features
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

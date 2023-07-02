@@ -1,0 +1,62 @@
+﻿@model IEnumerable<DataLayer.Slider>
+
+@{
+    ViewBag.Title = "Slider";
+}
+<h2 class="font_family_pe mb-2 text-center">
+    <span>اسلایدر</span>
+</h2>
+<hr />
+<p class="text-center">
+    <a class="btn btn-success btn-block" title="افزودن اسلایدر" href="@Url.Action("Create")">
+        <i class="fa fa-2x fa-plus-circle"></i>
+    </a>
+</p>
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SliderTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SliderTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                <input type="checkbox" name="IsActive" @((item.IsActive) ? "checked" : "") />
+            </td>
+            <td>
+                <a href="@Url.Action("Details",new {id=item.SliderID})" class="btn btn-primary inline-block" title="اطلاعات اسلایدر">
+                    <i class="fa fa-info-circle"></i>
+                </a>
+                <a href="@Url.Action("Edit", new { id = item.SliderID })" class="btn btn-warning inline-block" title="اسلایدر ویرایش">
+                    <i class="fa fa-edit"></i>
+                </a>
+                <a href="@Url.Action("Delete", new { id = item.SliderID })" class="btn btn-danger inline-block" title="حذف اسلایدر ">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

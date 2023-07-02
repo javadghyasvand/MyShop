@@ -1,0 +1,22 @@
+﻿@model IEnumerable<DataLayer.ViewModels.CompareItem>
+@if (Model.Count()!=0)
+{
+    <section class="border-radius compare-side">
+        <span class="text-center span-title">لیست مقایسه</span>
+        <hr class="hr-articl"/>
+        <article>
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <i class="delete-compare" onclick="DeleteToCompare(@item.ProductId)">X</i>
+                        <a href="">@item.ProductTitle</a>
+                    </li>
+                }
+      
+            </ul>
+            <a href="/Compare" class="show-compare-list border-radius">مشاهده لیست مقایسه</a>
+        </article>
+    </section>
+}
+

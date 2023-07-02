@@ -9,9 +9,11 @@
 
 namespace DataLayer
 {
+    using System.ComponentModel.DataAnnotations;
     using System;
     using System.Collections.Generic;
     
+    [MetadataType(typeof(Product_Select_Groups_Metadata))]
     public partial class Product_Select_Groups
     {
         public int PG_ID { get; set; }

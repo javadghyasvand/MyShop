@@ -87,6 +87,8 @@
     <Compile Include="MetaDataClasses\Product_Tag_Metadata.cs" />
     <Compile Include="MetaDataClasses\Roles_Metadata.cs" />
     <Compile Include="MetaDataClasses\Shop_Card_Metadata.cs" />
+    <Compile Include="MetaDataClasses\SiteVisit_Metadata.cs" />
+    <Compile Include="MetaDataClasses\Slider_Metadata.cs" />
     <Compile Include="MetaDataClasses\Users_Metadata.cs" />
     <Compile Include="MyEshop.Context.cs">
       <AutoGen>True</AutoGen>
@@ -137,9 +139,16 @@
     <Compile Include="Shop_Card.cs">
       <DependentUpon>MyEshop.tt</DependentUpon>
     </Compile>
+    <Compile Include="SiteVisit.cs">
+      <DependentUpon>MyEshop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Slider.cs">
+      <DependentUpon>MyEshop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>MyEshop.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CompareListViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ChangPasswordViewModel.cs" />
     <Compile Include="ViewModels\ForgotPassWordViewModel.cs" />

@@ -1,12 +1,19 @@
-﻿<!-- slider -->
-<div class="slider-layer">
-    <div id="slider-one" class="owl-carousel">
-        <div class="item">
-            <a href=""><img src="~/Content/img/slider.jpg" title="تست عنوان"></a>
-        </div>
-        <div class="item">
-            <a href=""><img src="~/Content/img/slider.jpg" title="تست عنوان"></a>
+﻿@model IEnumerable<DataLayer.Slider>
+
+@if (Model.Any())
+{
+    <!-- slider -->
+    <div class="slider-layer">
+        <div id="slider-one" class="owl-carousel">
+            @foreach (var item in  Model)
+            {
+                <div class="item">
+                    <a href="@item.Url">
+                        <img src="~/Images/Slider/@item.ImageName" title="@item.SliderTitle">
+                    </a>
+                </div>
+            }
         </div>
     </div>
-</div>
-<!-- End slider -->
+    <!-- End slider -->
+}

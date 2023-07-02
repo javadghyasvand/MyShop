@@ -38,5 +38,7 @@ namespace DataLayer
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Shop_Card> Shop_Card { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Slider> Slider { get; set; }
+        public virtual DbSet<SiteVisit> SiteVisit { get; set; }
     }
 }

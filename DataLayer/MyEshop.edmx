@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MyEShop_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MyEShop_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Features">
           <Key>
             <PropertyRef Name="FeatureId" />
@@ -112,6 +112,26 @@
           <Property Name="ShopCartID" Type="int" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="Count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SiteVisit">
+          <Key>
+            <PropertyRef Name="VisitID" />
+          </Key>
+          <Property Name="VisitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IP" Type="nchar" MaxLength="150" Nullable="false" />
+          <Property Name="DateTime" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="SliderID" />
+          </Key>
+          <Property Name="SliderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SliderTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -319,6 +339,8 @@
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shop_Card" EntityType="Self.Shop_Card" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiteVisit" EntityType="Self.SiteVisit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_OrderDetails_Orders" Association="Self.FK_OrderDetails_Orders">
             <End Role="Orders" EntitySet="Orders" />
@@ -381,8 +403,7 @@
             <End Role="Users1" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyEShop_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -791,7 +812,29 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Users1" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="Slider" EntityType="MyEShop_DBModel.Slider" />
+          <EntitySet Name="SiteVisit" EntityType="MyEShop_DBModel.SiteVisit" />
         </EntityContainer>
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="SliderID" />
+          </Key>
+          <Property Name="SliderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SliderTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ImageName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SiteVisit">
+          <Key>
+            <PropertyRef Name="VisitID" />
+          </Key>
+          <Property Name="VisitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IP" Type="String" Nullable="false" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -929,6 +972,28 @@
                 <ScalarProperty Name="ActiveCode" ColumnName="ActiveCode" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Slider">
+            <EntityTypeMapping TypeName="MyEShop_DBModel.Slider">
+              <MappingFragment StoreEntitySet="Slider">
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="SliderTitle" ColumnName="SliderTitle" />
+                <ScalarProperty Name="SliderID" ColumnName="SliderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteVisit">
+            <EntityTypeMapping TypeName="MyEShop_DBModel.SiteVisit">
+              <MappingFragment StoreEntitySet="SiteVisit">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="VisitID" ColumnName="VisitID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

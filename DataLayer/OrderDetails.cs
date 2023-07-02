@@ -9,9 +9,11 @@
 
 namespace DataLayer
 {
+    using System.ComponentModel.DataAnnotations;
     using System;
     using System.Collections.Generic;
     
+    [MetadataType(typeof(OrderDetails_Metadata))]
     public partial class OrderDetails
     {
         public int DetailId { get; set; }

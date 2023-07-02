@@ -21,122 +21,129 @@
     <link href="~/Areas/Admin/Content/css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/Content/css/style_Admin.css">
     <link rel="stylesheet" type="text/css" href="/Content/css/font-awesome.min.css">
+    <!--Persian Calender-->
+    <link href="~/Areas/Admin/Content/Kendo UI v2014.1.318 - ShamsiDatePicker/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/Kendo UI v2014.1.318 - ShamsiDatePicker/kendo.default.min.css" rel="stylesheet" />
 </head>
 
 <body class="font_family_pe">
 
-<div id="wrapper">
+    <div id="wrapper">
 
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/Admin">پنل مدیریت فروشگاه</a>
-        </div>
-        <!-- /.navbar-header -->
-
-        <ul class="nav navbar-top-links navbar-left">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li>
-                        <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-user -->
-            </li>
-            <!-- /.dropdown -->
-        </ul>
-        <!-- /.navbar-top-links -->
-
-        <div class="navbar-default navbar-static-side" role="navigation">
-            <div class="sidebar-collapse ">
-                <ul class="nav" id="side-menu">
-                    <li class="sidebar-search">
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                        <!-- /input-group -->
-                    </li>
-                    <li>
-                        <a style="color: #353535 !important" href="/Admin"><i class="fa fa-dashboard fa-fw"></i>داشبورد</a>
-                    </li>
-                    <li>
-                        <a style="color: #353535 !important" href="#"><i class="fa fa-bar-chart-o fa-fw"></i> محصولات<span class="fa fa-angle-left fa-fw"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a style="color: #353535 !important" href="/Admin/Products">لیست محصولات</a>
-                            </li>
-                            <li>
-                                <a style="color: #353535 !important" href="/Admin/Product_Groups">گروه محصولات</a>
-                            </li>
-                            <li>
-                                <a style="color: #353535 !important" href="/Admin/Features">ویژگی محصولات</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a style="color: #353535 !important" href="/Admin/Users"><i class="fa fa-table fa-fw"></i>کاربران</a>
-                    </li>
-                </ul>
-                <!-- /#side-menu -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Admin">پنل مدیریت فروشگاه</a>
             </div>
-            <!-- /.sidebar-collapse -->
-        </div>
-        <!-- /.navbar-static-side -->
-    </nav>
-    <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                @RenderBody()
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-left">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default navbar-static-side" role="navigation">
+                <div class="sidebar-collapse ">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a style="color: #353535 !important" href="/Admin"><i class="fa fa-dashboard fa-fw"></i>داشبورد</a>
+                        </li>
+                        <li>
+                            <a style="color: #353535 !important" href="#"><i class="fa fa-bar-chart-o fa-fw"></i> محصولات<span class="fa fa-angle-left fa-fw"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a style="color: #353535 !important" href="/Admin/Products">لیست محصولات</a>
+                                </li>
+                                <li>
+                                    <a style="color: #353535 !important" href="/Admin/Product_Groups">گروه محصولات</a>
+                                </li>
+                                <li>
+                                    <a style="color: #353535 !important" href="/Admin/Features">ویژگی محصولات</a>
+                                </li>   
+                                <li>
+                                    <a style="color: #353535 !important" href="/Admin/Sliders"> اسلایدر</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a style="color: #353535 !important" href="/Admin/Users"><i class="fa fa-table fa-fw"></i>کاربران</a>
+                        </li>
+                    </ul>
+                    <!-- /#side-menu -->
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    @RenderBody()
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- /#wrapper -->
-<!-- Core Scripts - Include with every page -->
-<script src="~/Areas/Admin/Content/js/jquery-1.10.2.js"></script>
-<script src="~/Content/Scripts/jquery-1.10.2.js"></script>
-<script src="~/Areas/Admin/Content/js/bootstrap.min.js"></script>
-<script src="~/Areas/Admin/Content/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
-<!-- Page-Level Plugin Scripts - Dashboard -->
-<script src="~/Areas/Admin/Content/js/plugins/morris/raphael-2.1.0.min.js"></script>
-<script src="~/Areas/Admin/Content/js/plugins/morris/morris.js"></script>
+    <!-- Core Scripts - Include with every page -->
+    <script src="~/Areas/Admin/Content/js/jquery-1.10.2.js"></script>
+    <script src="~/Content/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Areas/Admin/Content/js/bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/Content/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
-<!-- SB Admin Scripts - Include with every page -->
-<script src="~/Areas/Admin/Content/js/sb-admin.js"></script>
+    <!-- Page-Level Plugin Scripts - Dashboard -->
+    <script src="~/Areas/Admin/Content/js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="~/Areas/Admin/Content/js/plugins/morris/morris.js"></script>
 
-<!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
-<script src="~/Areas/Admin/Content/js/demo/dashboard-demo.js"></script>
-<script src="~/Content/Scripts/jquery-1.10.2.js"></script>
-<script src="~/ckeditor/ckeditor.js"></script>
-<script src="~/Content/Scripts/jquery.validate.js"></script>
-<script src="~/Content/Scripts/jquery.validate.min.js"></script>
-<script src="~/Content/Scripts/jquery.validate.unobtrusive.js"></script>
-<script src="~/Content/Scripts/jquery.validate.unobtrusive.min.js"></script>
-<script src="~/Content/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-<script src="~/Content/js/bootstrap.min.js"></script>
-<script src="~/Content/js/MyScript.js"></script>
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="~/Areas/Admin/Content/js/sb-admin.js"></script>
+
+    <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+    <script src="~/Areas/Admin/Content/js/demo/dashboard-demo.js"></script>
+    <script src="~/Content/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/Scripts/jquery.validate.js"></script>
+    <script src="~/Content/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Content/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Content/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/MyScript.js"></script>
+    <!-- /Persian Calender -->
 @RenderSection("scripts", false)
 </body>
 

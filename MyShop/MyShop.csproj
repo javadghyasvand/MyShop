@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.TypeScript.MSBuild.5.1.3\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.5.1.3\build\Microsoft.TypeScript.MSBuild.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -45,13 +46,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -137,6 +140,17 @@
     <Content Include="Areas\Admin\Content\js\plugins\morris\morris.js" />
     <Content Include="Areas\Admin\Content\js\plugins\morris\raphael-2.1.0.min.js" />
     <Content Include="Areas\Admin\Content\js\sb-admin.js" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\DateTimePicker-Shamsi.html" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\DateTimePicker-Shamsi.jpg" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\Default\sprite.png" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\fa-IR.js" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\fonts\BKoodakBold.svg" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\JalaliDate.js" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\jquery-1.9.1.min.js" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\jquery.min.js" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\kendo.common.min.css" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\kendo.default.min.css" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\kendo.web.js" />
     <Content Include="Areas\UserPanel\Views\web.config" />
     <Content Include="Areas\UserPanel\Views\Account\ChangPassword.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
@@ -588,6 +602,7 @@
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\phone.png" />
     <Content Include="Content\img\shop.png" />
+    <Content Include="Content\img\slider - Copy %282%29.jpg" />
     <Content Include="Content\img\slider.jpg" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\carousel.js" />
@@ -678,6 +693,21 @@
     <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="ckeditor\SECURITY.md" />
     <Content Include="ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\fonts\BKoodakBold.afm" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\fonts\BKoodakBold.eot" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\fonts\BKoodakBold.ttf" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\fonts\BKoodakBold.woff" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\fonts\Wyekan.eot" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\fonts\Wyekan.ttf" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\fonts\Wyekan.woff" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\fonts\WyekanBold.eot" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\fonts\WyekanBold.ttf" />
+    <Content Include="Areas\Admin\Content\Kendo UI v2014.1.318 - ShamsiDatePicker\fonts\WyekanBold.woff" />
+    <Content Include="Areas\Admin\Views\Sliders\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Sliders\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Sliders\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Sliders\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Sliders\Index.cshtml" />
     <None Include="Content\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\Scripts\jquery-1.10.2.js" />
     <Content Include="Content\Scripts\jquery-1.10.2.min.js" />
@@ -696,10 +726,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Controllers\CompareController.cs" />
     <Compile Include="Areas\Admin\Controllers\FeaturesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\Product_GroupsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SlidersController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\UserPanel\Controllers\AccountController.cs" />
     <Compile Include="Areas\UserPanel\UserPanelAreaRegistration.cs" />
@@ -707,7 +739,7 @@
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ShopCartController.cs" />
     <Compile Include="Controllers\ShopItemsController.cs" />
-    <Compile Include="Images\HomeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManegeEmailsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -771,6 +803,8 @@
     <Content Include="Views\ShopItems\ShowCart.cshtml" />
     <Content Include="Views\ShopItems\Index.cshtml" />
     <Content Include="Views\ShopItems\Order.cshtml" />
+    <Content Include="Views\Compare\ListCompare.cshtml" />
+    <Content Include="Views\Compare\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -781,9 +815,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Slider\" />
     <Folder Include="Areas\UserPanel\Data\" />
     <Folder Include="Areas\UserPanel\Views\Shared\" />
     <Folder Include="Images\ProductImages\Thumbnail\" />
+    <Folder Include="Images\Slider\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
@@ -828,8 +864,11 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.5.1.3\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.5.1.3\build\Microsoft.TypeScript.MSBuild.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.5.1.3\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.5.1.3\build\Microsoft.TypeScript.MSBuild.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.TypeScript.MSBuild.5.1.3\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.5.1.3\build\Microsoft.TypeScript.MSBuild.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
