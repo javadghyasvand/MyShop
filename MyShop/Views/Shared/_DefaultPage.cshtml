@@ -126,16 +126,33 @@
 
 <div class="container margin-top-25">
     <aside class="col-md-3 col-sm-4 right-side-content">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <section class="border-radius">
+                <span class="text-center span-title">پنل کاربر</span>
+                <hr class="hr-articl"/>
+                <article>
+                    <ul>
+                        <li>
+                            <a href="UserPanel/Account/ChangPassword">تغییر رمز عبور</a>
+                        </li>
+                        <li>
+                            <a href="/Account/LogOff">خروج از حساب کاربری</a>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+        }
         @RenderSection("Filters", false)
         <!-- Basket -->
         <div id="ShowCart">
-            @Html.Action("ShowCart","ShopItems")
+            @Html.Action("ShowCart", "ShopItems",new { area = "" })
         </div>
 
         <!-- End Basket -->
         <!-- compare -->
         <div id="Compare">
-            @Html.Action("ListCompare","Compare")
+            @Html.Action("ListCompare", "Compare", new { area = "" })
         </div>
         <!-- End compare -->
         <!-- Category -->
@@ -143,6 +160,7 @@
         <!-- End Category -->
         <!-- Category -->
         <!-- End Category -->
+        @Html.Action("VisitSite", "Home", new { area = "" })
     </aside>
     <div class="col-md-9 col-sm-8 left-side-content">
         @RenderBody()

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DataLayer;
+using DataLayer.ViewModels;
 
 namespace MyShop.Controllers
 {
@@ -23,6 +24,17 @@ namespace MyShop.Controllers
             return PartialView(slider);
         }
 
+        public ActionResult VisitSite()
+        {
+            DateTime today = DateTime.Now.Date;
+            DateTime yesterday = today.AddDays(-1);
+            VisitViewModel visitSite = new VisitViewModel();
+            visitSite.VisitSum = _dbEntities.SiteVisit.Count();
+            visitSite.VisitToday = _dbEntities.SiteVisit.Count(v => v.DateTime == today);
+            visitSite.VisitYesterday=_dbEntities.SiteVisit.Count(v=>v.DateTime == yesterday);
+            visitSite.Online= int.Parse(System.Web.HttpContext.Current.Application["Online"].ToString());
+            return PartialView(visitSite);
+        }
         public ActionResult AboutUs()
         {
             return View();
